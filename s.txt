@@ -1,5 +1,40 @@
 #!/bin/bash
-
 echo "Hello world"
+#lsb_release -a
 
-lsb_release -a
+
+export SLACK_CLI_TOKEN='xoxb-952829317635-957947141699-LoFTDCL8nOTMeEBqEe1FgUvj'
+export SLACK_CHANNEL="#devops"
+SLACK_BIN="/usr/bin/mslack"
+
+get_server_info(){
+  export PRIVATE_IP=$(hostname -I)
+  export PUB_IP=$(curl -s icanhazip.com)
+  export TIMESTAMP=$(date)
+}
+
+get_user_data(){
+  log_path=/tmp/uinfo.log
+  get_server_info
+
+  echo "
+A SSH login was successful, so here are some information for security:
+    User           :  $USER
+    User IP Host   :  ${SSH_CLIENT/ *}
+    Date           :  ${TIMESTAMP}
+    Hostname       :  `hostname`
+    Server IP      :  ${PUB_IP} | ${PRIVATE_IP}
+
+    We will notify you once user[$USER] will end session.
+  " > ${log_path}
+
+  if [[ -f "${log_path}" ]]; then
+    cat ${log_path} | ${SLACK_BIN} chat send --channel "${SLACK_CHANNEL}" \
+      --title "SSH login successful - ${USER}@${PRIVATE_IP} on ${TIMESTAMP}" \
+      --color good > /dev/null 2>&1
+
+    rm -f ${log_path}
+  fi
+}
+
+get_user_data
