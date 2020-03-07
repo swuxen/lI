@@ -3,7 +3,7 @@ echo "Hello world"
 #lsb_release -a
 
 
-export SLACK_CLI_TOKEN='xoxb-952829317635-957947141699-LoFTDCL8nOTMeEBqEe1FgUvj'
+export SLACK_CLI_TOKEN='xxxxxxxxxxxxxxxx'
 export SLACK_CHANNEL="#devops"
 SLACK_BIN="/usr/bin/mslack"
 
