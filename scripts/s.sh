@@ -1,5 +1,5 @@
 #!/bin/bash
-LATEST_VER="v0.0.3"
+LATEST_VER="v0.0.4"
 dependency(){
   JQ=$(which jq)
   CURL="$(which curl)"

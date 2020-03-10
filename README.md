@@ -1,6 +1,6 @@
 #### Welcome  [ MasterMind Agent 97 ]
 
-**Agent 97** : v0.0.3
+**Agent 97** : v0.0.4
 
 Let's Explore **MasterMind Agent 97**
 
