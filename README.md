@@ -1,5 +1,7 @@
 #### Welcome  [ MasterMind Agent 97 ]
 
+**Agent 97** : v0.0.2
+
 Let's Explore **MasterMind Agent 97**
 
 Run below command to Get Your Public IP.
